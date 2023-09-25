@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/09/2023 11:39:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.entidad.Departamentos" table="departamentos" catalog="jsf_jpa_crud" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="departamentoCodigo" type="string">
+            <column name="departamento_codigo" length="100" />
+        </property>
+        <property name="departamentoNombre" type="string">
+            <column name="departamento_nombre" length="250" />
+        </property>
+        <property name="fechaHoraCrea" type="timestamp">
+            <column name="fecha_hora_crea" length="19" />
+        </property>
+        <property name="fechaHoraModifica" type="timestamp">
+            <column name="fecha_hora_modifica" length="19" />
+        </property>
+        <set name="empleadoses" table="empleados" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="departamentos_id" />
+            </key>
+            <one-to-many class="modelo.entidad.Empleados" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Tabla Departamentos</title>
+    </h:head>
+    <h:body>
+        
+        
+        <h:form>
+            <p:commandButton value="Agregar Departamentos" actionListener="#{departamentosController.limpiarDepartamentos()}" oncomplete="PF('dialogoAgregar').show();" update=":formAgregar"/>
+            <p:separator/>
+        </h:form>
+        
+         <h:form id="formListado">
+             <p:dataTable id="tablaDepartamentoss" paginator="true" paginatorPosition="bottom" rows="10" var="departamentos" value="#{departamentosController.listaDepartamentos}" emptyMessage="No existen departamentoss">
+                            <p:column headerText="ID departamentos">
+                                <h:outputText value="#{departamentos.id}" />
+                            </p:column>
+                            <p:column headerText="Codigo Departamento">
+                                <h:outputText value="#{departamentos.departamentoCodigo}" />
+                            </p:column>
+                            <p:column headerText="Nombre Departamento">
+                                <h:outputText value="#{departamentos.departamentoNombre}" />
+                            </p:column>
+                            <p:column headerText="Fecha Creación">
+                                <h:outputText value="#{departamentos.fechaHoraCrea}" />
+                            </p:column>
+                            <p:column headerText="Fecha Modificación">
+                                <h:outputText value="#{departamentos.fechaHoraModifica}" />
+                            </p:column>
+                            
+                         
+                            <p:column headerText="MODIFICAR" style="text-align: center">
+                                <p:commandButton icon="ui-icon-pencil" title="Modificar" oncomplete="PF('dialogoModificar').show();" update=":formModificar">
+                                    <f:setPropertyActionListener target="#{departamentosController.departamentos}" value="#{departamentos}"/>
+                                </p:commandButton>
+                            </p:column>
+                            <p:column headerText="ELIMINAR" style="text-align: center">
+                                <p:commandButton icon="ui-icon-trash" title="Eliminar" oncomplete="PF('dialogoEliminar').show();" update=":formEliminar">
+                                    <f:setPropertyActionListener target="#{departamentosController.departamentos}" value="#{departamentos}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+        
+        
+        <h:form id="formAgregar">
+                        <p:dialog id="dlgAgregar" header="Agregar Departamentos" widgetVar="dialogoAgregar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+                            <p:panelGrid columns="2" style="margin: 0 auto;">                                
+                                <p:outputLabel value="Nombre Departamento: "/>
+                                <p:inputText value="#{departamentosController.departamentos.departamentoNombre}"/>
+                                <p:outputLabel value="Codigo Departamento: "/>
+                                <p:inputText value="#{departamentosController.departamentos.departamentoCodigo}"/>
+                            </p:panelGrid>
+                            <p:commandButton  value="Guardar" actionListener="#{departamentosController.agregarDepartamentos()}" update=":formListado:tablaDepartamentoss" oncomplete="PF('dialogoAgregar').hide();"/>
+                            <p:commandButton  value="Cancelar" onclick="PF('dialogoAgregar').hide();"/>
+                        </p:dialog>
+                    </h:form>
+
+                    <h:form id="formModificar">
+                        <p:dialog id="dlgModificar" header="Modificar Departamentos" widgetVar="dialogoModificar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+                            <p:panelGrid columns="2" style="margin: 0 auto;">                                
+                                <p:outputLabel value="Nombre Departamento: "/>
+                                <p:inputText value="#{departamentosController.departamentos.departamentoNombre}"/>
+                                <p:outputLabel value="Codigo Departamento: "/>
+                                <p:inputText value="#{departamentosController.departamentos.departamentoCodigo}"/>
+                                
+                            </p:panelGrid>
+                            <p:commandButton  value="Guardar" actionListener="#{departamentosController.modificarDepartamentos()}" update=":formListado:tablaDepartamentoss" oncomplete="PF('dialogoModificar').hide();"/>
+                            <p:commandButton  value="Cancelar" onclick="PF('dialogoModificar').hide();"/>
+                        </p:dialog>
+                    </h:form>
+
+                    <h:form id="formEliminar">
+                        <p:dialog id="dlgEliminar" header="Eliminar Departamentos" widgetVar="dialogoEliminar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+                            <h:outputText value="Desea eliminar este registro?"/>
+                            <p:commandButton  value="Si" actionListener="#{departamentosController.eliminarDepartamentos()}" update=":formListado:tablaDepartamentoss" oncomplete="PF('dialogoEliminar').hide();"/>
+                            <p:commandButton  value="No" onclick="PF('dialogoEliminar').hide();"/>
+                        </p:dialog>
+                    </h:form>
+        
+        
+        
+        <h:form>
+            <p:commandButton value="Agregar Empleados" actionListener="#{empleadosController.limpiarEmpleados()}" oncomplete="PF('dialogoAgregar').show();" update=":formAgregar2"/>
+            <p:separator/>
+        </h:form>
+        
+         <h:form id="formListado2">
+             <p:dataTable id="tablaEmpleados" paginator="true" paginatorPosition="bottom" rows="10" var="empleados" value="#{empleadosController.listaEmpleados}" emptyMessage="No existen Empleados">
+                            <p:column headerText="ID Empleado">
+                                <h:outputText value="#{empleados.id}" />
+                            </p:column>
+                            <p:column headerText="Nombres">
+                                <h:outputText value="#{empleados.nombres}" />
+                            </p:column>
+                            <p:column headerText="Apellidos">
+                                <h:outputText value="#{empleados.apellidos}" />
+                            </p:column>
+                            <p:column headerText="Documento Tipo">
+                                <h:outputText value="#{empleados.documentoTipo}" />
+                            </p:column>
+                            <p:column headerText="Numero Documento">
+                                <h:outputText value="#{empleados.documentoNumero}" />
+                            </p:column>
+                 
+                             <p:column headerText="Ciudad">
+                                 <h:outputText value="#{empleados.ciudad}" />
+                            </p:column>
+                            <p:column headerText="Direccion">
+                                <h:outputText value="#{empleados.direccion}" />
+                            </p:column>
+                             <p:column headerText="Correo Electronico">
+                                 <h:outputText value="#{empleados.correoElectronico}" />
+                            </p:column>
+                            <p:column headerText="Telefono">
+                                <h:outputText value="#{empleados.telefono}" />
+                            </p:column>
+                            <p:column headerText="Departamento">
+                                
+                            </p:column>
+                            <p:column headerText="Fecha Creación">
+                                <h:outputText value="#{empleados.fechaHoraCreacion}" />
+                            </p:column>
+                            <p:column headerText="Fecha Modificación">
+                                <h:outputText value="#{empleados.fechaHoraModifica}" />
+                            </p:column>
+                            
+                         
+                            <p:column headerText="MODIFICAR" style="text-align: center">
+                                <p:commandButton icon="ui-icon-pencil" title="Modificar" oncomplete="PF('dialogoModificar').show();" update=":formModificar2">
+                                    <f:setPropertyActionListener target="#{empleadosController.empleados}" value="#{empleados}"/>
+                                </p:commandButton>
+                            </p:column>
+                            <p:column headerText="ELIMINAR" style="text-align: center">
+                                <p:commandButton icon="ui-icon-trash" title="Eliminar" oncomplete="PF('dialogoEliminar').show();" update=":formEliminar">
+                                    <f:setPropertyActionListener target="#{empleadosController.empleados}" value="#{empleados}"/>
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+        
+        
+        <h:form id="formAgregar2">
+                        <p:dialog id="dlgAgregar2" header="Agregar Departamentos" widgetVar="dialogoAgregar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+                            <p:panelGrid columns="2" style="margin: 0 auto;">                                
+                                <p:outputLabel value="Nombre "/>
+                                <p:inputText value="#{empleadosController.empleados.nombres}"/>
+                                <p:outputLabel value="Apellido "/>
+                                <p:inputText value="#{empleadosController.empleados.apellidos}"/>
+                                <p:outputLabel value="Tipo Documento "/>
+                                <p:selectOneMenu value="#{empleados.documentoTipo}">
+                                    <f:selectItem itemLabel="CC" itemValue="cc"></f:selectItem>
+                                    <f:selectItem itemLabel="RC" itemValue="rc"></f:selectItem>
+                                    <f:selectItem itemLabel="TI" itemValue="ti"></f:selectItem>
+                                    <f:selectItem itemLabel="CE" itemValue="ce"></f:selectItem>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Numero Documento "/>
+                                <p:inputText value="#{empleadosController.empleados.documentoNumero}"/>
+                                <p:outputLabel value="Ciudad "/>
+                                <p:inputText value="#{empleadosController.empleados.ciudad}"/>
+                                <p:outputLabel value="Correo "/>
+                                <p:inputText value="#{empleadosController.empleados.correoElectronico}"/>
+                                <p:outputLabel value="Telefono "/>
+                                <p:inputText value="#{empleadosController.empleados.telefono}"/>
+                                <p:outputLabel value="Departamento"/>
+                                <p:selectOneMenu value="#{empleadosController.departamentos}">
+                                     <f:selectItem noSelectionOption="true" itemLabel="#{null}"></f:selectItem>
+                                     <f:selectItems value="#{departamentosController.listaDepartamentos}" var="dep" itemLabel="#{dep.departamentoNombre}" itemValue="#{dep}"></f:selectItems>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <p:commandButton  value="Guardar" actionListener="#{empleadosController.agregarEmpleados()}" update=":formListado2:tablaEmpleados" oncomplete="PF('dialogoAgregar').hide();"/>
+                            <p:commandButton  value="Cancelar" onclick="PF('dialogoAgregar').hide();"/>
+                        </p:dialog>
+                    </h:form>
+
+                    <h:form id="formModificar2">
+                        <p:dialog id="dlgModificar2" header="Modificar Departamentos" widgetVar="dialogoModificar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+                            <p:panelGrid columns="2" style="margin: 0 auto;">                                
+                                <p:outputLabel value="Nombre "/>
+                                <p:inputText value="#{empleadosController.empleados.nombres}"/>
+                                <p:outputLabel value="Apellido "/>
+                                <p:inputText value="#{empleadosController.empleados.apellidos}"/>
+                                <p:outputLabel value="Tipo Documento "/>
+                                <p:selectOneMenu value="#{empleados.documentoTipo}">
+                                    <f:selectItem itemLabel="CC" itemValue="cc"></f:selectItem>
+                                    <f:selectItem itemLabel="RC" itemValue="rc"></f:selectItem>
+                                    <f:selectItem itemLabel="TI" itemValue="ti"></f:selectItem>
+                                    <f:selectItem itemLabel="CE" itemValue="ce"></f:selectItem>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Numero Documento "/>
+                                <p:inputText value="#{empleadosController.empleados.documentoNumero}"/>
+                                <p:outputLabel value="Ciudad "/>
+                                <p:inputText value="#{empleadosController.empleados.ciudad}"/>
+                                <p:outputLabel value="Correo "/>
+                                <p:inputText value="#{empleadosController.empleados.correoElectronico}"/>
+                                <p:outputLabel value="Telefono "/>
+                                <p:inputText value="#{empleadosController.empleados.telefono}"/>
+                                <p:outputLabel value="Departamento "/>
+                                <p:selectOneMenu value="#{empleadosController.departamentos}">
+                                     <f:selectItem noSelectionOption="true" itemLabel="#{null}"></f:selectItem>
+                                     <f:selectItems value="#{departamentosController.listaDepartamentos}" var="pro" itemLabel="#{pro.departamentoNombre}" itemValue="#{pro}"></f:selectItems>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <p:commandButton  value="Guardar" actionListener="#{empleadosController.modificarEmpleados()}" update=":formListado2:tablaEmpleados" oncomplete="PF('dialogoModificar').hide();"/>
+                            <p:commandButton  value="Cancelar" onclick="PF('dialogoModificar').hide();"/>
+                        </p:dialog>
+                    </h:form>
+
+                    <h:form id="formEliminar2">
+                        <p:dialog id="dlgEliminar2" header="Eliminar Empleados" widgetVar="dialogoEliminar" resizable="false" showEffect="fade" hideEffect="explode" modal="true">
+                            <h:outputText value="Desea eliminar este registro?"/>
+                            <p:commandButton  value="Si" actionListener="#{empleadosController.eliminarEmpleados()}" update=":formListado2:tablaEmpleados" oncomplete="PF('dialogoEliminar').hide();"/>
+                            <p:commandButton  value="No" onclick="PF('dialogoEliminar').hide();"/>
+                        </p:dialog>
+                    </h:form>
+        
+    </h:body>
+</html>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/09/2023 11:39:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.entidad.Empleados" table="empleados" catalog="jsf_jpa_crud" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="departamentos" class="modelo.entidad.Departamentos" fetch="select">
+            <column name="departamentos_id" />
+        </many-to-one>
+        <property name="documentoTipo" type="string">
+            <column name="documento_tipo" length="45" />
+        </property>
+        <property name="documentoNumero" type="string">
+            <column name="documento_numero" length="100" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="nombres" length="250" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="250" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="250" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="250" />
+        </property>
+        <property name="correoElectronico" type="string">
+            <column name="correo_electronico" length="250" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="100" />
+        </property>
+        <property name="fechaHoraCreacion" type="timestamp">
+            <column name="fecha_hora_creacion" length="19" />
+        </property>
+        <property name="fechaHoraModifica" type="timestamp">
+            <column name="fecha_hora_modifica" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>
