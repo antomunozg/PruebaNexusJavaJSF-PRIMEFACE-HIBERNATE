@@ -40,7 +40,7 @@ CREATE TABLE `empleados` (
   PRIMARY KEY (`id`),
   KEY `departamento_id_idx` (`departamentos_id`),
   CONSTRAINT `departamento_id` FOREIGN KEY (`departamentos_id`) REFERENCES `departamentos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (1,'CC','1085328031','Antonio','Munoz','Pasto',NULL,'anto@hotmail','3215049126','2023-09-25 05:02:35','2023-09-25 05:07:02',1);
+INSERT INTO `empleados` VALUES (1,'CC','1085328031','Antonio','Munoz','Pasto',NULL,'anto@hotmail','3215049126','2023-09-25 05:02:35','2023-09-25 05:07:02',1),(5,'cc','456','Antonio','Muñoz Guevara','Pasto',NULL,'a@a','+573215049126','2023-09-25 16:57:05','2023-09-25 17:06:31',2),(6,'cc','456','Antonio','Muñoz Guevara','Pasto',NULL,'a@a','+573215049126','2023-09-25 17:03:33','2023-09-25 17:04:28',5),(7,'cc','456','Antonio','Muñoz Guevara','Pasto',NULL,'a@a','+573215049126','2023-09-25 17:08:05','2023-09-25 17:14:43',1),(8,'cc','789654','Antonio','Muñoz Guevara','Pasto',NULL,'a@an','+573215049126','2023-09-25 17:17:38','2023-09-25 17:19:38',2),(9,'cc','758273','Antonio','Muñoz Guevara','Pasto',NULL,'a@an','+573215049126','2023-09-25 17:18:29','2023-09-25 17:20:52',6);
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -62,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-25  1:05:27
+-- Dump completed on 2023-09-25 12:33:27

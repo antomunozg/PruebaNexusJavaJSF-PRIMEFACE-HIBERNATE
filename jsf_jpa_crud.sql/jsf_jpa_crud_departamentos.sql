@@ -31,7 +31,7 @@ CREATE TABLE `departamentos` (
   `fecha_hora_crea` datetime DEFAULT NULL,
   `fecha_hora_modifica` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `departamentos` (
 
 LOCK TABLES `departamentos` WRITE;
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` VALUES (1,'1','sistemas',NULL,NULL),(2,'2','archivo',NULL,NULL),(3,'3','comunicación',NULL,NULL),(5,'4','Financiero','2023-09-25 04:25:28','2023-09-25 04:25:47');
+INSERT INTO `departamentos` VALUES (1,'1','sistemass',NULL,'2023-09-25 06:11:27'),(2,'7','archivo',NULL,'2023-09-25 17:27:54'),(5,'4','Financiero','2023-09-25 04:25:28','2023-09-25 04:25:47'),(6,'520003','Comunicación','2023-09-25 17:26:39',NULL);
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-25  1:05:27
+-- Dump completed on 2023-09-25 12:33:27
