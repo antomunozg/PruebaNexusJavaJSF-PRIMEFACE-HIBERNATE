@@ -94,4 +94,22 @@ public class EmpleadosDao {
         return cal.getTime();
     }
     
+    public List<Empleados> listarEmpleadosConDepartamentos() {
+    List<Empleados> lista = new ArrayList<>();
+    Session sesion = HibernateUtil.getSessionFactory().openSession();
+    Transaction t = sesion.beginTransaction();
+    String hql = "SELECT e FROM Empleados e LEFT JOIN FETCH e.departamentos";
+    try {
+        lista = sesion.createQuery(hql).list();
+        t.commit();
+    } catch (Exception e) {
+        t.rollback();
+    } finally {
+        sesion.close();
+    }
+    return lista;
+}
+
+
+    
 }

@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -17,7 +18,7 @@ import modelo.entidad.Departamentos;
  */
 @ManagedBean
 @ViewScoped
-public class DepartamentosController {
+public class DepartamentosController implements Serializable{
 
     /**
      * Creates a new instance of DepartamentosController

@@ -5,11 +5,13 @@
  */
 package controlador;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import modelo.dao.DepartamentosDao;
 import modelo.dao.EmpleadosDao;
 import modelo.entidad.Departamentos;
 import modelo.entidad.Empleados;
@@ -20,7 +22,7 @@ import modelo.entidad.Empleados;
  */
 @ManagedBean
 @ViewScoped
-public class EmpleadosController {
+public class EmpleadosController implements Serializable {
 
  /**
      * Creates a new instance of EmpleadosController
@@ -31,11 +33,12 @@ public class EmpleadosController {
 
     public EmpleadosController() {
         empleados = new Empleados();
+        departamentos = new Departamentos();
     }
 
     public List<Empleados> getListaEmpleados() {
         EmpleadosDao ad = new EmpleadosDao();
-        listaEmpleados = ad.listarEmpleados();
+        listaEmpleados = ad.listarEmpleadosConDepartamentos(); // Utiliza un método que carga departamentos con JOIN FETCH
         return listaEmpleados;
     }
 
